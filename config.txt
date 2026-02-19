@@ -15,4 +15,4 @@ usb_max_current_enable=1
 force_turbo=1
 
 # Disable OS check
-os_check=0
+check_os=0
