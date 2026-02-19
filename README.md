@@ -131,6 +131,9 @@ This process assumes a Linux machine. On Windows, use WSL.
    git clone --recursive https://github.com/ARM-software/arm-trusted-firmware.git arm-trusted-firmware
    git clone https://github.com/andyvand/EDK2-GrubFS edk2/GrubFS
    git clone https://github.com/andyvand/EDK2-VBoxFS edk2/VBoxFSDxe
+   cd arm-trusted-firmware
+   patch -p1 < ../arm-trusted-firmware-patch.diff
+   cd ..
    ```
 
 3. Build the image:
