@@ -123,8 +123,14 @@ This process assumes a Linux machine. On Windows, use WSL.
 
 2. Clone the repository:
    ```bash
-   git clone --recurse-submodules https://github.com/worproject/rpi5-uefi.git
+   git clone https://github.com/andyvand/RPi5-D0-UEFI-firmware rpi5-uefi
    cd rpi5-uefi
+   rm -Rf edk2 edk2-non-osi arm-trusted-firmware
+   git clone --recursive https://github.com/tianocore/edk2.git edk2
+   git clone --recursive https://github.com/tianocore/edk2-non-osi.git edk2-non-osi
+   git clone --recursive https://github.com/ARM-software/arm-trusted-firmware.git arm-trusted-firmware
+   git clone https://github.com/andyvand/EDK2-GrubFS edk2/GrubFS
+   git clone https://github.com/andyvand/EDK2-VBoxFS edk2/VBoxFSDxe
    ```
 
 3. Build the image:
