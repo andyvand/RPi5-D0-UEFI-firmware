@@ -1,0 +1,1 @@
+/Users/andyvand/Downloads/blueberry/build-tool/target/aarch64-unknown-uefi/release/uart_hello_driver.efi: /Users/andyvand/Downloads/blueberry/build-tool/src/main.rs /Users/andyvand/Downloads/blueberry/build-tool/src/uart2.rs

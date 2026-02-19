@@ -1,0 +1,9 @@
+[Defines]
+  DEC_SPECIFICATION              = 0x00010005
+  PACKAGE_NAME                   = DellUsbExt
+  PACKAGE_GUID                   = F7CDD4C0-CA48-47E0-B8B5-098E9D90E4E5
+  PACKAGE_VERSION                = 1.08
+
+[Protocols]
+  gUsbExtProtocolGuid = {0x3a7f1e32, 0xd5a5, 0x498a, {0x8c, 0x2c, 0x19, 0x27, 0x11, 0x76, 0x18, 0x64}}
+

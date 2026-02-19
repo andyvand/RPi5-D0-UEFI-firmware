@@ -1,0 +1,1 @@
+/Users/andyvand/Downloads/blueberry/build-tool/Menu/target/aarch64-unknown-uefi/debug/Menu.efi: /Users/andyvand/Downloads/blueberry/build-tool/Menu/src/main.rs /Users/andyvand/Downloads/blueberry/build-tool/Menu/src/uart_debug.rs
