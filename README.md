@@ -121,7 +121,7 @@ This process assumes a Linux machine. On Windows, use WSL.
    sudo pacman -S git base-devel gcc dtc aarch64-linux-gnu-binutils aarch64-linux-gnu-gcc aarch64-linux-gnu-glibc python python-pyelftools iasl --needed
    ```
 
-2. Clone the repository:
+2. Clone the repository and patch it:
    ```bash
    git clone https://github.com/andyvand/RPi5-D0-UEFI-firmware rpi5-uefi
    cd rpi5-uefi
@@ -133,6 +133,9 @@ This process assumes a Linux machine. On Windows, use WSL.
    git clone https://github.com/andyvand/EDK2-VBoxFS edk2/VBoxFSDxe
    cd arm-trusted-firmware
    patch -p1 < ../arm-trusted-firmware-patch.diff
+   cd ..
+   cd edk2
+   patch -p1 < ../edk2-sd-card-patch.diff
    cd ..
    ```
 
