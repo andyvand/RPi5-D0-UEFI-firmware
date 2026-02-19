@@ -1,0 +1,56 @@
+--- arm-trusted-firmware/Makefile	2026-02-19 13:27:55
++++ arm-trusted-firmware-new/Makefile	2026-02-19 09:27:41
+@@ -131,7 +131,31 @@
+ 
+ # Variables for use with documentation build using Sphinx tool
+ DOCS_PATH		?=	docs
++
++ifeq (${ARM_ARCH_MAJOR},7)
++       target32-directive      =       -target arm-none-eabi
++# Will set march-directive from platform configuration
++else
++       target32-directive      =       -target armv8a-none-eabi
++endif #(ARM_ARCH_MAJOR)
++
++ifneq ($(filter %-clang,$($(ARCH)-cc-id)),)
++       ifeq ($($(ARCH)-cc-id),arm-clang)
++               TF_CFLAGS_aarch32       :=      -target arm-arm-none-eabi
++               TF_CFLAGS_aarch64       :=      -target aarch64-arm-none-eabi
++       else
++               TF_CFLAGS_aarch32       =       $(target32-directive)
++               TF_CFLAGS_aarch64       :=      -target aarch64-unknown-none-elf
++       endif
+ 
++else ifeq ($($(ARCH)-cc-id),gnu-gcc)
++       # Enable LTO only for aarch64
++       ifeq (${ARCH},aarch64)
++               LTO_CFLAGS      =       $(if $(filter-out 0,$(ENABLE_LTO)),-flto)
++       endif
++endif #(clang)
++
++
+ # Process Debug flag
+ ifneq (${DEBUG}, 0)
+ 	BUILD_TYPE	:=	debug
+--- arm-trusted-firmware/make_helpers/utilities.mk	2026-02-19 13:27:55
++++ arm-trusted-firmware-new/make_helpers/utilities.mk	2026-02-19 09:31:29
+@@ -518,8 +518,8 @@
+         m=$(if $(3),$(call shell-quote,$(3)),$$(($$# + 1)));
+ 
+         printf '%s\n' "$$@" $\
+-                | sed -n "$${n},$${m}{ $${m}!p }; $${m}q" $\
+-                | sed "s/'/'\\\\''/g; s/^/'/; s/\$$/'/";
++                | /usr/local/bin/sed -n "$${n},$${m}{ $${m}!p }; $${m}q" $\
++                | /usr/local/bin/sed "s/'/'\\\\''/g; s/^/'/; s/\$$/'/";
+ endef
+ 
+ #
+@@ -604,7 +604,7 @@
+ 
+         for argument in "$$@"; do
+                 sanitized=$$(printf '%s' "$${argument}" $\
+-                        | sed -e 's/[$$]/$$$$/g; s/,/$${comma}/g' $\
++                        | /usr/local/bin/sed -e 's/[$$]/$$$$/g; s/,/$${comma}/g' $\
+                                 -e 's/(/$${lparen}/g; s/)/$${rparen}/g');
+ 
+                 printf '$$(call %s,%s,%s)\n' $\
