@@ -15,11 +15,11 @@
 
 #include "AcpiTables.h"
 
-STATIC EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE Spcr = {
+STATIC EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_4 Spcr = {
   ACPI_HEADER (
-    EFI_ACPI_6_3_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_SIGNATURE,
-    EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE,
-    EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_REVISION
+    EFI_ACPI_6_6_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_SIGNATURE,
+    EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_4,
+    EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_REVISION_4
   ),
   // UINT8                                   InterfaceType;
   EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERFACE_TYPE_ARM_PL011_UART,
@@ -29,7 +29,7 @@ STATIC EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE Spcr = {
     EFI_ACPI_RESERVED_BYTE,
     EFI_ACPI_RESERVED_BYTE
   },
-  // EFI_ACPI_6_3_GENERIC_ADDRESS_STRUCTURE  BaseAddress;
+  // EFI_ACPI_6_6_GENERIC_ADDRESS_STRUCTURE  BaseAddress;
   ARM_GAS32 (PL011_DEBUG_BASE_ADDRESS),
   // UINT8                                   InterruptType;
   EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE_INTERRUPT_TYPE_GIC,
@@ -63,8 +63,16 @@ STATIC EFI_ACPI_SERIAL_PORT_CONSOLE_REDIRECTION_TABLE Spcr = {
   0x00000000,
   // UINT8                                   PciSegment;
   0x00,
-  // UINT32                                  Reserved3;
-  EFI_ACPI_RESERVED_DWORD
+  // UINT32                                  UARTClockFreq;
+  0x00,
+  // UINT32                                  PreciseBaudRate;
+  0x00,
+  // UINT16                                  NamespaceStringLength;
+  0x0006,
+  // UINT16                                  NamespaceStringOffset;
+  0x0058,
+  // CHAR8                                   
+  { 'P', 'L', '0', '1', '1', 0 }
 };
 
 //

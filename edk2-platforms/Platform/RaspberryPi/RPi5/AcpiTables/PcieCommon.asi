@@ -88,7 +88,7 @@ Method (_OSC, 4) {
 
     // Unknown revision
     If (Arg1 != 1) {
-      Cdw1 |= 0x08
+      CDW1 |= 0x08
     }
 
     // Capabilities bits were masked

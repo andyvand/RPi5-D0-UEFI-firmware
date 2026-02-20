@@ -23,17 +23,17 @@
 #pragma pack (1)
 
 typedef struct {
-  EFI_ACPI_6_3_GENERIC_TIMER_DESCRIPTION_TABLE Gtdt;
-} EFI_ACPI_6_3_GENERIC_TIMER_DESCRIPTION_TABLES;
+  EFI_ACPI_6_6_GENERIC_TIMER_DESCRIPTION_TABLE Gtdt;
+} EFI_ACPI_6_6_GENERIC_TIMER_DESCRIPTION_TABLES;
 
 #pragma pack ()
 
-EFI_ACPI_6_3_GENERIC_TIMER_DESCRIPTION_TABLES Gtdt = {
+EFI_ACPI_6_6_GENERIC_TIMER_DESCRIPTION_TABLES Gtdt = {
   {
     ACPI_HEADER(
-      EFI_ACPI_6_3_GENERIC_TIMER_DESCRIPTION_TABLE_SIGNATURE,
-      EFI_ACPI_6_3_GENERIC_TIMER_DESCRIPTION_TABLES,
-      EFI_ACPI_6_3_GENERIC_TIMER_DESCRIPTION_TABLE_REVISION
+      EFI_ACPI_6_6_GENERIC_TIMER_DESCRIPTION_TABLE_SIGNATURE,
+      EFI_ACPI_6_6_GENERIC_TIMER_DESCRIPTION_TABLES,
+      EFI_ACPI_6_6_GENERIC_TIMER_DESCRIPTION_TABLE_REVISION
     ),
     SYSTEM_TIMER_BASE_ADDRESS,                    // UINT64  PhysicalAddress
     0,                                            // UINT32  Reserved
@@ -47,7 +47,9 @@ EFI_ACPI_6_3_GENERIC_TIMER_DESCRIPTION_TABLES Gtdt = {
     GTDT_GTIMER_FLAGS,                            // UINT32  NonSecurePL2TimerFlags
     0xFFFFFFFFFFFFFFFF,                           // UINT64  CntReadBasePhysicalAddress
     0,                                            // UINT32  PlatformTimerCount
-    0                                             // UINT32 PlatfromTimerOffset
+    0,                                            // UINT32  PlatfromTimerOffset
+    0,                                            // UINT32  VirtualPL2TimerGSIV
+    0                                             // UINT32  VirtualPL2TimerFlags
   },
 };
 

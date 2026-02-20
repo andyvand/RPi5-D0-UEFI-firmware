@@ -17,7 +17,7 @@
 
 [Sources]
   Dbg2.aslc
-  Dsdt.asl
+  DSDT2.asl
   Fadt.aslc
   Gtdt.aslc
   Madt.aslc
