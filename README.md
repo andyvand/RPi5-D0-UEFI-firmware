@@ -130,7 +130,7 @@ This process assumes a Linux machine. On Windows, use WSL.
    git clone --recursive https://github.com/tianocore/edk2-non-osi.git edk2-non-osi
    git clone --recursive https://github.com/ARM-software/arm-trusted-firmware.git arm-trusted-firmware
    git clone https://github.com/andyvand/EDK2-GrubFS edk2/GrubFS
-   git clone https://github.com/andyvand/EDK2-VBoxFS edk2/VBoxFSDxe
+   git clone https://github.com/andyvand/EDK2-VBoxFS edk2/VBoxFsDxe
    cd arm-trusted-firmware
    patch -p1 < ../arm-trusted-firmware-patch.diff
    cd ..
